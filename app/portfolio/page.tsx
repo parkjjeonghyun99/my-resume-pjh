@@ -92,7 +92,7 @@ const PROJECTS: Project[] = [
       {
         title: "⚙️ 모델 선정 과정",
         content:
-          "DT, Random Forest, Gradient Boost, XGBoost, LightGBM 5개 모델을 비교했습니다. 불량 미검출(False Negative) 최소화가 핵심 목표였기 때문에 Recall을 우선 지표로 삼았고, AUC와 F1-score를 종합적으로 검토했습니다. Random Forest가 Recall 0.486, AUC 0.858로 가장 균형 잡힌 성능을 보여 최종 선정했습니다. Feature Importance 분석 결과 slab 장입온도(0.094), 소둔산세 후 두께(0.081), 예열대 온도(0.063) 순으로 중요도가 높았으며, 이는 통계 분석에서 도출한 Vital Few와 일치해 분석 결과의 신뢰도를 높였습니다.",
+          "Decision Tree, Random Forest, Gradient Boost, XGBoost, LightGBM 5개 모델을 비교했습니다. 불량 미검출(False Negative) 최소화가 핵심 목표였기 때문에 Recall을 우선 지표로 삼았고, AUC와 F1-score를 종합적으로 검토했습니다. Random Forest가 Recall 0.486, AUC 0.858로 가장 균형 잡힌 성능을 보여 최종 선정했습니다. Feature Importance 분석 결과 slab 장입온도(0.094), 소둔산세 후 두께(0.081), 예열대 온도(0.063) 순으로 중요도가 높았으며, 이는 통계 분석에서 도출한 Vital Few와 일치해 분석 결과의 신뢰도를 높였습니다.",
       },
       {
         title: "🔄 최적 조업 조건 도출",
@@ -109,7 +109,7 @@ const PROJECTS: Project[] = [
 const SKILLS = [
   { category: "AI / ML", items: ["Python", "Random Forest", "XGBoost", "LightGBM", "YOLOv8", "OpenCV"] },
   { category: "Data", items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "chi-squared", "ANOVA", "Scikit-learn", "statsmodels"] },
-  { category: "Web / Dev", items: ["Next.js", "Vercel", "Git", "prompt engineering", "Qwen2.5-VL-32B-Instruct-AWQ"] },
+  { category: "Web / Dev", items: ["Next.js", "Vercel", "Git", "Prompt Engineering", "Qwen2.5-VL-32B-Instruct-AWQ"] },
 ];
 
 function Tag({ text }: { text: string }) {
@@ -183,7 +183,7 @@ export default function PortfolioPage() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
       <section className="bg-white border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-6 py-16 sm:py-24">
+        <div className="max-w-6xl mx-auto px-8 py-16 sm:py-24">
           <p className="text-sm text-blue-500 font-semibold tracking-widest uppercase mb-3">Portfolio</p>
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
             박정현
@@ -191,13 +191,13 @@ export default function PortfolioPage() {
               AI · Data Analyst
             </span>
           </h1>
-          <p className="mt-6 text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="mt-6 text-gray-600 text-base sm:text-lg leading-relaxed">
             데이터 분석 및 가설 검정을 통해 실제 산업 문제를 해결하는 것에 관심이 있습니다.
           </p>
-          <p className="mt-2 text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="mt-2 text-gray-600 text-base sm:text-lg leading-relaxed">
             팀 프로젝트로 컴퓨터 비전·자연어처리·통계 분석을 활용하여 엔드-투-엔드 AI 시스템을 개발했습니다.
           </p>
-          <p className="mt-2 text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="mt-2 text-gray-600 text-base sm:text-lg leading-relaxed">
             Next.js 기반 웹 페이지를 만들어 Vercel에 배포하는 작업을 진행했습니다.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -219,7 +219,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-12">
+      <section className="max-w-6xl mx-auto px-8 py-12">
         <h2 className="text-xl font-bold mb-6">Skills</h2>
         <div className="grid sm:grid-cols-3 gap-4">
           {SKILLS.map(s => (
@@ -233,7 +233,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-4 pb-20">
+      <section className="max-w-6xl mx-auto px-8 py-4 pb-20">
         <h2 className="text-xl font-bold mb-6">Projects</h2>
         <div className="space-y-8">
           {PROJECTS.map(p => <ProjectCard key={p.id} project={p} />)}
@@ -241,7 +241,7 @@ export default function PortfolioPage() {
       </section>
 
       <footer className="border-t border-gray-200 bg-white">
-        <div className="max-w-4xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-6xl mx-auto px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-sm text-gray-400">© 2026 박정현</p>
           <a
             href="https://github.com/parkjjeonghyun99"
