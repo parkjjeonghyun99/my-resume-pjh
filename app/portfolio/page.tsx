@@ -140,48 +140,21 @@ function Tag({ text }: { text: string }) {
 
 function ProjectCard({ project }: { project: Project }) {
   const [open, setOpen] = useState(false);
+  const [resourceOpen, setResourceOpen] = useState(false);
   const accent = project.color === "blue" ? "border-blue-500" : "border-indigo-500";
   const badgeBg = project.color === "blue" ? "bg-blue-50 text-blue-700" : "bg-indigo-50 text-indigo-700";
   const headingColor = project.color === "blue" ? "text-blue-600" : "text-indigo-600";
   const dotColor = project.color === "blue" ? "bg-blue-400" : "bg-indigo-400";
 
+  const hasResources = project.pdfUrl || project.dataDictUrl || project.rawDataUrl || project.notebooks;
+
   return (
     <div className={`border-l-4 ${accent} bg-white rounded-2xl shadow-sm p-6 sm:p-8 space-y-4`}>
       <div>
-        <div className="flex items-center gap-3 flex-wrap">
-          <span className={`text-xs font-semibold px-2 py-0.5 rounded ${badgeBg}`}>{project.period}</span>
-          {project.pdfUrl && (
-            <a href={project.pdfUrl} target="_blank" rel="noreferrer"
-              className="text-xs bg-blue-50 text-blue-600 border border-blue-200 px-2 py-0.5 rounded hover:bg-blue-100 transition">
-              📄 발표자료
-            </a>
-          )}
-          {project.dataDictUrl && (
-            <a href={project.dataDictUrl} target="_blank" rel="noreferrer"
-              className="text-xs bg-purple-50 text-purple-600 border border-purple-200 px-2 py-0.5 rounded hover:bg-purple-100 transition">
-              📋 Data Dictionary
-            </a>
-          )}
-          {project.rawDataUrl && (
-            <a href={project.rawDataUrl} target="_blank" rel="noreferrer"
-              className="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded hover:bg-orange-100 transition">
-              📂 Raw Data
-            </a>
-          )}
-        </div>
+        <span className={`text-xs font-semibold px-2 py-0.5 rounded ${badgeBg}`}>{project.period}</span>
         <h2 className={`mt-2 text-xl sm:text-2xl font-bold ${headingColor}`}>{project.title}</h2>
         <p className="text-sm text-gray-600 mt-0.5">{project.subtitle}</p>
         <p className="text-xs text-gray-400 mt-1">{project.team}</p>
-        {project.notebooks && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {project.notebooks.map(n => (
-              <a key={n.label} href={n.url} target="_blank" rel="noreferrer"
-                className="text-xs bg-green-50 text-green-600 border border-green-200 px-2 py-0.5 rounded hover:bg-green-100 transition">
-                📓 {n.label}
-              </a>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -203,6 +176,51 @@ function ProjectCard({ project }: { project: Project }) {
         className="text-sm font-medium text-gray-500 hover:text-gray-800 transition">
         {open ? "▲ 상세 내용 접기" : "▼ 상세 내용 보기"}
       </button>
+
+      {hasResources && (
+        <div>
+          <button onClick={() => setResourceOpen(v => !v)}
+            className="text-sm font-medium text-gray-500 hover:text-gray-800 transition">
+            {resourceOpen ? "▲ 관련 자료 접기" : "▼ 관련 자료 보기"}
+          </button>
+          {resourceOpen && (
+            <div className="mt-3 space-y-2">
+              {(project.pdfUrl || project.dataDictUrl || project.rawDataUrl) && (
+                <div className="flex flex-wrap gap-2">
+                  {project.pdfUrl && (
+                    <a href={project.pdfUrl} target="_blank" rel="noreferrer"
+                      className="text-xs bg-blue-50 text-blue-600 border border-blue-200 px-2 py-0.5 rounded hover:bg-blue-100 transition">
+                      📄 발표자료
+                    </a>
+                  )}
+                  {project.dataDictUrl && (
+                    <a href={project.dataDictUrl} target="_blank" rel="noreferrer"
+                      className="text-xs bg-purple-50 text-purple-600 border border-purple-200 px-2 py-0.5 rounded hover:bg-purple-100 transition">
+                      📋 Data Dictionary
+                    </a>
+                  )}
+                  {project.rawDataUrl && (
+                    <a href={project.rawDataUrl} target="_blank" rel="noreferrer"
+                      className="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded hover:bg-orange-100 transition">
+                      📂 Raw Data
+                    </a>
+                  )}
+                </div>
+              )}
+              {project.notebooks && (
+                <div className="flex flex-wrap gap-2">
+                  {project.notebooks.map(n => (
+                    <a key={n.label} href={n.url} target="_blank" rel="noreferrer"
+                      className="text-xs bg-green-50 text-green-600 border border-green-200 px-2 py-0.5 rounded hover:bg-green-100 transition">
+                      📓 {n.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {open && (
         <div className="space-y-4 pt-1">
