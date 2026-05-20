@@ -80,7 +80,16 @@ export default function Home() {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-xl font-bold border-b-2 border-gray-800 pb-1 mb-4">PROJECTS · 프로젝트 경험</h2>
+        <div className="flex items-center justify-between border-b-2 border-gray-800 pb-1 mb-4">
+          <h2 className="text-xl font-bold">PROJECTS · 프로젝트 경험</h2>
+          <a
+            href="https://my-portfolio-pjh.vercel.app/portfolio"
+            target="_blank"
+            className="text-xs bg-blue-50 text-blue-600 border border-blue-200 px-2.5 py-1 rounded hover:bg-blue-100 transition"
+          >
+            🗂 포트폴리오 보기
+          </a>
+        </div>
         <div className="space-y-6">
 
           <div>
