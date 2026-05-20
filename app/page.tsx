@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function Home() {
-  redirect("/resume");
+export default function RootPage() {
+  redirect("/portfolio");
 }
